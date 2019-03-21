@@ -22,6 +22,10 @@ cd ../..
 ```bash
 python MainPageTests.py
 ```
+или
+```bash
+python -m unittest -v MainPageTests.py
+```
 
 ### Набор тестов
 1. `test_add_new_row` - проверяет добавление новой записи в таблицу
