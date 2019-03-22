@@ -12,6 +12,7 @@ class MainPageTests(unittest.TestCase):
     driver = None
     con = None
     MAIN_PAGE = None
+    url = 'http://tereshkova.test.kavichki.com'
 
     @classmethod
     def setUpClass(self):
@@ -23,6 +24,7 @@ class MainPageTests(unittest.TestCase):
         print('Browser started')
         self.driver.maximize_window()
         self.MAIN_PAGE = MainPage(self.driver)
+        self.MAIN_PAGE.open_url(self.url)
 
     @classmethod
     def tearDownClass(self):
