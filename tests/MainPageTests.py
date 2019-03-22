@@ -1,9 +1,9 @@
 import unittest
 from unittest import TestCase as asserts
 from selenium import webdriver
-from MainPage import MainPage
-from Locators import MainPageLocators
-import DB
+from pages.MainPage import MainPage
+from locators.MainPageLocators import MainPageLocators
+from helpers import DB
 
 
 class MainPageTests(unittest.TestCase):
