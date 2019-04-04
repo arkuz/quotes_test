@@ -6,25 +6,24 @@
  - Так же в репозитории есть драйвер для браузера Chrome - [chromedriver.exe](https://github.com/arkuz/quotes_test/blob/master/chromedriver.exe)
  - Отчет о прохождении тестов - [Test Results - Unittests_in_MainPageTests_py.html](https://github.com/arkuz/quotes_test/blob/master/Test%20Results%20-%20Unittests_in_MainPageTests_py.html)
 
-### Установка
+### Требования
+У Вас должен быть установлен virtualenv
 ```bash
 pip install virtualenv
+```
+
+### Установка
+```bash
 git clone https://github.com/arkuz/quotes_test
 cd quotes_test
 virtualenv env
-cd env/scripts
-activate.bat
+env/scripts/activate
 pip install -r requirements.txt
-cd ../..
 ```
 
 ### Запуск
 ```bash
-python MainPageTests.py
-```
-или
-```bash
-python -m unittest -v MainPageTests.py
+python -m unittest -v tests.MainPageTests
 ```
 
 ### Набор тестов

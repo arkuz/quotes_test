@@ -1,9 +1,9 @@
 import unittest
 from unittest import TestCase as asserts
 from selenium import webdriver
-from MainPage import MainPage
-from Locators import MainPageLocators
-import DB
+from pages.MainPage import MainPage
+from locators.MainPageLocators import MainPageLocators
+from helpers import DB
 
 
 class MainPageTests(unittest.TestCase):
@@ -12,24 +12,26 @@ class MainPageTests(unittest.TestCase):
     driver = None
     con = None
     MAIN_PAGE = None
+    url = 'http://tereshkova.test.kavichki.com'
 
     @classmethod
     def setUpClass(self):
-        self.con = DB.init_connection()
-        print('Database connected')
-        DB.delete_all_from_db(self.con)
-        print('Clear table')
+        #self.con = DB.init_connection()
+        #print('Database connected')
+        #DB.delete_all_from_db(self.con)
+        #print('Clear table')
         self.driver = webdriver.Chrome()
         print('Browser started')
         self.driver.maximize_window()
         self.MAIN_PAGE = MainPage(self.driver)
+        self.MAIN_PAGE.open_url(self.url)
 
     @classmethod
     def tearDownClass(self):
         self.driver.close()
         print('Browser closed')
-        DB.close_connection(self.con)
-        print('Database disconnected')
+        #DB.close_connection(self.con)
+        #print('Database disconnected')
 
     def test_add_new_row(self): # тест корректен, ошибка в функционале сайта
         # test data set
@@ -88,7 +90,7 @@ class MainPageTests(unittest.TestCase):
         asserts().assertDictEqual(expected, actual,
                                   'Error: name, count, cost edits is not empty')
 
-    def test_compare_tables_data(self):
+    def compare_tables_data(self):
         # copy all records in DB
         rows = self.get_table_data()
         DB.copy_all_in_table(self.con, rows)
